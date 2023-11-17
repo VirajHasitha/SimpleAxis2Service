@@ -1,0 +1,54 @@
+<project
+
+        xmlns="http://maven.apache.org/POM/4.0.0"
+
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+
+
+  <modelVersion>4.0.0</modelVersion>
+
+
+
+  <groupId>com.example</groupId>
+
+
+  <artifactId>healthcheck</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+
+  <build>
+  <plugins>
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-antrun-plugin</artifactId>
+    <version>1.1</version>
+    <executions>
+      <execution>
+        <id>create_aar</id>
+        <phase>generate-test-resources</phase>
+        <configuration>
+          <tasks>
+            <!-- Adding the version sample -->
+            <mkdir dir="target/healthcheck/META-INF" />
+            <copy todir="target/healthcheck/META-INF">
+              <fileset dir="src/main/java/com/example/wso2/axis2/META-INF">
+                <include name="*.*" />
+              </fileset>
+            </copy>
+            <jar basedir="target/healthcheck" destfile="target/healthcheck.aar" />
+            <delete dir="target/healthcheck" />
+          </tasks>
+        </configuration>
+        <goals>
+          <goal>run</goal>
+        </goals>
+      </execution>
+    </executions>
+  </plugin>
+</plugins>
+ </build>
+</project>

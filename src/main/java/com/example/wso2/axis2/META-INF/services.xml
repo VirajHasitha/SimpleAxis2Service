@@ -1,0 +1,18 @@
+<service name="HealthCheck">
+    <Description>
+        This is a sample service to explain simple aar service
+    </Description>
+    <transports>
+        <transport>https</transport>
+        <transport>http</transport>
+    </transports>
+    <operation name="getHealthC">
+        <!--wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+            <intf:OperationPolicyTestAssertion1 xmlns:intf="http://test.policy.org/wsas"
+                                                marker="2"/>
+        </wsp:Policy-->
+        <messageReceiver class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+    </operation>
+    <parameter name="ServiceClass" locked="false">com.example.wso2.axis2.HealthCheckService</parameter>
+    <parameter name="modifyUserWSDLPortAddress" locked="false">true</parameter>
+</service>
